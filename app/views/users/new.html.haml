@@ -1,0 +1,28 @@
+- content_for :stylesheets do
+  html { height: 100%; }
+  body { height: 100%; background-color: #4caf50; }
+  \.home { height: 100%; width: 100%; }
+
+.container.home.valign-wrapper
+  .container.valign
+    .row
+      .col.s12
+        %h1.center-align#home_heading Fakebook
+        %p.center-align#home_subheading A basic social network
+    .row.signup.white
+      .col.s12.z-depth-2
+        .row
+          = simple_form_for @user do |f|
+            .input-field.col.s10.offset-s1
+              = f.input :name
+            .input-field.col.s10.offset-s1
+              = f.input :email
+            .input-field.col.s10.offset-s1
+              = f.input :password, label: 'Password(minimum 8 characters)'
+            .input-field.col.s10.offset-s1
+              = f.input :password_confirmation
+            .input-field.col.s10.offset-s1.center-align
+              = f.button :submit, 'Sign Up', class: 'green darken-3'
+    .row.home_footer
+      .col.s12.center-align
+        = link_to 'About', about_path, id: 'about'

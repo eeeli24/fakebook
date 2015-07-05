@@ -1,0 +1,36 @@
+- content_for :stylesheets do
+  html { height: 100%; }
+  body { height: 100%; background-color: #4caf50; }
+  \.home { height: 100%; width: 100%; }
+  \.remember { margin-bottom: 0; }
+  \#remember_me { margin-right: 10px; }
+
+
+.container.home.valign-wrapper
+  .container.valign
+    .row
+      .col.s12
+        %h1.center-align#home_heading Fakebook
+        %p.center-align#home_subheading A basic social network
+    .row.signup.white
+      .col.s12.z-depth-2
+        .row
+          = simple_form_for(resource, as: resource_name,
+            url: session_path(resource_name)) do |f|
+            .row#errors
+              .col.s10.offset-s1
+                - flash.each do |msg_type, msg|
+                  %div{ class: msg_type }= msg
+            .row
+              .input-field.col.s5.offset-s1
+                = f.input :email, required: false
+              .input-field.col.s5
+                = f.input :password, required: false
+            .row
+              .switch.col.s10.offset-s1.right-align
+                = f.input :remember_me, wrapper: false, label_html: { id: 'remember_me' },
+                  as: :boolean if devise_mapping.rememberable?
+                = f.button :submit, "Sign in"
+    .row.home_footer
+      .col.s12.center-align
+        = link_to 'About', about_path, id: 'about'
