@@ -1,0 +1,4 @@
+- @incoming.each do |request|
+  %p
+    = User.find(request.user_id).name
+    = link_to 'Add to friends', friend_request_path(id: request.id), method: 'patch'

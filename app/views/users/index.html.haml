@@ -1,0 +1,5 @@
+- @users.each do |user|
+  %p
+    = user.name
+    - unless user == current_user
+      = link_to 'Send friend request', friend_requests_path(friend_id: user.id), method: 'post'
