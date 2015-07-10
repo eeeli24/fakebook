@@ -1,0 +1,15 @@
+%ul.dropdown-content#headerdrop
+  %li= link_to 'Profile', '#'
+  %li= link_to 'Friends', '#'
+  %li= link_to 'About', '#'
+  %li.divider
+  %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
+
+%header
+  %nav
+    .nav-wrapper
+      = link_to 'Fakebook', root_path, class: 'brand-logo headerlogo'
+      %ul.right
+        %li
+          %a.dropdown-button(href='#' data-activates='headerdrop')
+            %i.mdi-navigation-more-vert
