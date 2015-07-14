@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :pending_requests, through: :friend_requests, source: :friend
   has_many :friendships, dependent: :destroy
   has_many :friends, through: :friendships
+  has_many :posts
+  has_many :likes
+  has_many :comments
 
   def remove_friend(friend)
     current_user.friends.destroy(friend)
