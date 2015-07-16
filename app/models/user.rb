@@ -15,4 +15,12 @@ class User < ActiveRecord::Base
   def remove_friend(friend)
     current_user.friends.destroy(friend)
   end
+
+  # A feed of self + friends posts
+  def timeline
+    friend_ids = 'SELECT friend_id FROM friendships
+                  WHERE  user_id = :user_id'
+    Post.where("user_id IN (#{friend_ids})
+                OR user_id = :user_id", user_id: id).order(created_at: :desc)
+  end
 end

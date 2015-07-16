@@ -4,4 +4,6 @@ class Post < ActiveRecord::Base
   has_many :comments
 
   validates :body, presence: true
+
+  self.per_page = 10
 end

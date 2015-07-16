@@ -1,0 +1,16 @@
+-# Pray that user has JS turned on in his browser, else no new posts for him D:
+%ul.collapsible.popout
+  %li
+    .collapsible-header
+      %i.mdi-content-add-box
+      %p.left-align New post
+    .collapsible-body
+      .row
+        = simple_form_for @post do |f|
+          .input-field.col.s10.offset-s1
+            = f.input :title, label: 'Title (optional)'
+          .input-field.col.s10.offset-s1
+            = f.input :body, label: 'Text', required: false,
+              input_html: { class: 'materialize-textarea' }
+          .input-field.col.s10.offset-s1.right-align
+            = f.button :submit, 'Submit'

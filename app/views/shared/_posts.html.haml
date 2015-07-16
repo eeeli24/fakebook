@@ -1,0 +1,15 @@
+- posts.each do |post|
+  .post
+    .row
+      .col.s12
+        .card
+          .card-content
+            .row.card-title
+              .col.s6.left-align.green-text
+                #{post.user.name}:
+                - if post.title
+                  = post.title
+              .col.s6.right-align.grey-text.created_at
+                = post.created_at.strftime('%b %-d at %H:%M')
+            %p.left-align= post.body
+          .card-action

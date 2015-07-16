@@ -14,6 +14,7 @@ gem 'devise'
 gem 'haml'
 gem 'materialize-sass'
 gem 'simple_form'
+gem 'will_paginate'
 
 group :development, :test do
   gem 'byebug'
