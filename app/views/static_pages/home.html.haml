@@ -4,7 +4,7 @@
   .row
     .col.s4
       = render 'shared/friends'
-    .col.s8.center-align
+    .col.s8
       = render 'shared/new_post'
       .posts
         = render partial: 'shared/posts', locals: { posts: @posts }

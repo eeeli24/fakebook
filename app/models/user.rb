@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   has_many :friends, through: :friendships
   has_many :posts
   has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
   has_many :comments
 
   def remove_friend(friend)
