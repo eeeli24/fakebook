@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @post = Post.new
+    @comment = Comment.new
     @posts = current_user.timeline.paginate(page: params[:page])
     respond_to do |format|
       format.html

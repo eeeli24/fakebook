@@ -21,6 +21,6 @@ module ApplicationHelper
     else
       text = 'Like'
     end
-    content_tag(:p, text, class: 'like_text small_font grey-text')
+    content_tag(:p, text, class: 'like_text small-text grey-text')
   end
 end

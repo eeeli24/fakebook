@@ -11,21 +11,32 @@
                   - if post.title
                     = post.title
                 .col.s6.right-align
-                  %p.small_font.grey-text= post.created_at.strftime('%b %-d at %H:%M')
+                  %p.small-text.grey-text= post.created_at.strftime('%b %-d at %H:%M')
             %p.left-align.post_body= post.body
             -# Drop a like or unlike link
             - if post.likers.include?(current_user)
-              = link_to like_path(current_user.likes.find_by(post: post)), method: 'delete' do
+              = link_to like_path(current_user.likes.find_by(post: post)),
+                method: 'delete' do
                 = render_like_icon(post)
             - else
               = link_to likes_path(post_id: post.id), method: 'post' do
                 = render_like_icon(post)
             = render_like_text(post)
           .card-action.comments
-            %ul.collapsible.z-depth-0.comments(data-collapsible='accordion' style='border: 0')
+            %ul.collapsible.z-depth-0.comments(data-collapsible='accordion'
+                                               style='border: 0')
               %li
                 .collapsible-header
                   %i.mdi-communication-comment
                   %p.comments Comments (#{post.comments.count})
                 .collapsible-body
-                  szdfsd
+                  .row.comments_dropdown
+                    = simple_form_for @comment do |f|
+                      .input-field.col.s12
+                        = f.hidden_field :post_id, value: post.id
+                        = f.input :body, label: 'Comment',
+                          input_html: { class: 'materialize-textarea' }
+                      .input-field.col.s12.right-align
+                        = f.button :submit, 'Post comment'
+                      = render partial: 'shared/comments',
+                        locals: { comments: post.comments }

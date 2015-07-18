@@ -2,7 +2,7 @@
   padding-left: 20px !important;
 }
 
-.small_font {
+.small-text {
   font-size: small;
 }
 
@@ -13,6 +13,16 @@
 .comments {
   padding: 0 !important;
   margin: 0 !important;
+  text-transform: none !important;
+}
+
+.comments_dropdown {
+  padding: 0 10px 10px 10px !important;
+  margin: 0 !important;
+}
+
+.comment {
+  padding: 10px;
 }
 
 .like_text {

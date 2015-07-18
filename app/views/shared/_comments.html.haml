@@ -1,0 +1,7 @@
+- comments.each do |comment|
+  .row.comments
+    .col.s12
+      %p.comments
+        = link_to comment.user.name, user_path(comment.user.id), class: 'red-text comments'
+        = comment.body
+      %p.comments.small-text.grey-text= comment.created_at.strftime('%b %-d at %H:%M')

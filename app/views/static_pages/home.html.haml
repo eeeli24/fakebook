@@ -7,7 +7,7 @@
     .col.s8
       = render 'shared/new_post'
       .posts
-        = render partial: 'shared/posts', locals: { posts: @posts }
+        = render partial: 'shared/posts', locals: { posts: @posts, comment: @comment}
       - if @posts.next_page
         = link_to 'Load more', root_path(page: @posts.next_page),
           class: 'load-more-posts', remote: true

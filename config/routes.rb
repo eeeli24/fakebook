@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :friend_requests, only: [:index, :create, :update, :destroy]
   resources :posts
   resources :likes, only: [:create, :destroy]
+  resources :comments, only: [:create, :destroy]
   get 'about' => 'static_pages#about'
 end
