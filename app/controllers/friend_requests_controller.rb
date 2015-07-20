@@ -1,7 +1,7 @@
 class FriendRequestsController < ApplicationController
 
   def index
-    @incoming = FriendRequest.where(friend: current_user)
+    @incoming = current_user.incoming_requests
     @outgoing = current_user.friend_requests
   end
 
@@ -13,7 +13,7 @@ class FriendRequestsController < ApplicationController
       redirect_to root_path
     else
       flash.now[:error] = 'Request failed.'
-      render :show
+      render :back
     end
   end
 

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :path => ''
   resources :users
   resources :friend_requests, only: [:index, :create, :update, :destroy]
+  resources :friends, only: [:index, :destroy]
   resources :posts
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]

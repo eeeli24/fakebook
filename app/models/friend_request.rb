@@ -18,6 +18,6 @@ class FriendRequest < ActiveRecord::Base
   end
 
   def not_pending_already
-    errors.add(:friend, 'already sent a request') if friend.pending_requests.include?(user)
+    errors.add(:friend, 'already sent a request') if friend.pending_friends.include?(user)
   end
 end

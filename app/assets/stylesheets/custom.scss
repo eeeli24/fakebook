@@ -1,5 +1,21 @@
+// A lot of overriding the default materializecss styles here.
+// Kinda messy, but not sure how do properly do it.
+
 .headerlogo {
   padding-left: 20px !important;
+}
+
+.brand-logo {
+  left: 0 !important;
+  -webkit-transform: none !important;
+  -moz-transform: none !important;
+  -ms-transform: none !important;
+  -o-transform: none !important;
+  transform: none !important;
+}
+
+.new-notifications {
+  color: #e53935;
 }
 
 .small-text {

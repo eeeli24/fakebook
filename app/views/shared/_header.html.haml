@@ -1,15 +1,34 @@
-%ul.dropdown-content#headerdrop
-  %li= link_to 'Profile', '#'
-  %li= link_to 'Friends', '#'
-  %li= link_to 'About', '#'
-  %li.divider
-  %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
+-# Check for current_user to avoid errors when logged out
+- if current_user
+  %ul.dropdown-content#user
+    %li= link_to 'Profile', '#'
+    %li= link_to 'Friends', friends_path
+    %li.divider
+    %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
 
-%header
-  %nav
-    .nav-wrapper
-      = link_to 'Fakebook', root_path, class: 'brand-logo headerlogo'
-      %ul.right
-        %li
-          %a.dropdown-button(href='#' data-activates='headerdrop')
-            %i.mdi-navigation-more-vert
+  %ul.dropdown-content#notifications
+    %li
+      - if current_user.incoming_requests.present?
+        = link_to friend_requests_path, class: 'center-align' do
+          = pluralize(current_user.incoming_requests.count, 'friend request', 'friend requests')
+      - else
+        = link_to 'Nothing here', '', class: 'black-text center-align'
+
+  %header
+    %nav
+      .nav-wrapper
+        = link_to 'Fakebook', root_path, method: 'get', class: 'brand-logo headerlogo'
+        %ul.right
+          - if current_user.incoming_requests.present?
+            %li
+              %a.dropdown-button(href='' data-activates='notifications')
+                %i.mdi-social-notifications-none.new-notifications
+          - else
+            %li
+              %a.dropdown-button(href='' data-activates='notifications')
+                %i.mdi-social-notifications-none
+          %li
+            %a.dropdown-button(href='' data-activates='user')
+              = current_user.name
+          %li= link_to 'Users', '#'
+          %li= link_to 'About', '#'
