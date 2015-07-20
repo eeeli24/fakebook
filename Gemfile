@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 gem 'rails', '4.2.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
@@ -16,6 +15,7 @@ gem 'haml'
 gem 'materialize-sass'
 gem 'simple_form'
 gem 'will_paginate'
+gem 'paperclip', '~> 4.3'
 
 group :development, :test do
   gem 'byebug'
