@@ -3,7 +3,11 @@
     .col.s4
       = image_tag(user.avatar.url(:profile))
     .col.s8
-      %h5= user.name
+      - if current_page?(action: :index)
+        = link_to user_path(user) do
+          %h5.red-text= user.name
+      - else
+        %h5= user.name
       %p Age: #{user.age}
       %p
         Location:
@@ -11,11 +15,16 @@
   .divider
   .row.profile_card_footer.right-align
     .col.s12
+      -# This mess probably deserves a helper method
       - if user == current_user
         %p= link_to 'Edit profile', '#modal_edit', class: 'modal-trigger red-text'
       - elsif current_user.friends.include?(user)
         %p= link_to 'Remove from friends',
           friend_path(id: user.id), method: 'delete', class: 'red-text'
+      - elsif user.pending_friends.include?(current_user)
+        %p= link_to 'Accept friend request',
+          friend_request_path(id: user.friend_requests.where(friend: current_user).take.id),
+          method: 'patch', class: 'red-text'
       - else
         - unless current_user.pending_friends.include?(user)
           %p= link_to 'Send friend request',

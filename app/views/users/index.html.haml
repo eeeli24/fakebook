@@ -1,5 +1,6 @@
-- @users.each do |user|
-  %p
-    = user.name
-    - unless user == current_user
-      = link_to 'Send friend request', friend_requests_path(friend_id: user.id), method: 'post'
+.container
+  .row
+    .col.s8.offset-s2
+      - @users.each do |user|
+        - unless user == current_user
+          = render partial: 'shared/user_info', locals: { user: user }
