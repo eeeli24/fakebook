@@ -1,6 +1,9 @@
 - comments.each do |comment|
   .row.comments
-    .col.s12
+    .col.s1.col-avatar.center-align
+      = link_to user_path(comment.user) do
+        = image_tag(comment.user.avatar(:small), class: 'circle')
+    .col.s11.comments
       %p.comments
         = link_to comment.user.name, user_path(comment.user.id), class: 'red-text comments'
         = comment.body

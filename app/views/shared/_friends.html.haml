@@ -2,8 +2,11 @@
   .card-content
     %span.card-title.black-text Friends
     - if user.friends.present?
-      - user.friends.each do |friend|
-        %p= friend.name
+      - user.friends.limit(5).each do |friend|
+        .valign-wrapper
+          = link_to user_path(friend), class: 'red-text valign' do
+            = image_tag(friend.avatar(:small), class: 'circle')
+            = friend.name
     - else
       %p.grey-text No friends yet
   .card-action.right-align
