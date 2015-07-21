@@ -1,10 +1,10 @@
 .card
   .card-content
     %span.card-title.black-text Friends
-    - if current_user.friends.present?
-      - current_user.friends.each do |friend|
+    - if user.friends.present?
+      - user.friends.each do |friend|
         %p= friend.name
     - else
-      %p.grey-text You don't have any yet
+      %p.grey-text No friends yet
   .card-action.right-align
     = link_to 'See all', '#', class: 'red-text'

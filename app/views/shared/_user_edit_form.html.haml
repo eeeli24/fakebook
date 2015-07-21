@@ -1,0 +1,21 @@
+%h4 Edit Profile
+.row
+  = simple_form_for(user, url: registration_path(user), method: 'put') do |f|
+    .input-field.col.s12
+      = f.input :name, required: false
+    .input-field.file-field.col.s12
+      .btn
+        %span Profile photo
+        = f.input :avatar, label: false, wrapper: false, required: false
+      .file-path-wrapper
+        %input.file-path(type='text')
+    .input-field.col.s12
+      = f.input :age, required: false
+    .input-field.col.s12
+      = f.input :country_code, required: false, label: false,
+        input_html: { class: 'browser-default' }
+    .input-field.col.s12
+      = f.input :current_password,
+        label: 'Current password. Required to confirm the changes.', required: false
+    .input-field.col.s12.right-align
+      = f.button :submit, 'Edit'

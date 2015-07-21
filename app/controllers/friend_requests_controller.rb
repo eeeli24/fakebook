@@ -10,7 +10,7 @@ class FriendRequestsController < ApplicationController
     @friend_request = current_user.friend_requests.new(friend: friend)
     if @friend_request.save
       flash[:success] = 'Request sent.'
-      redirect_to root_path
+      redirect_to :back
     else
       flash.now[:error] = 'Request failed.'
       render :back

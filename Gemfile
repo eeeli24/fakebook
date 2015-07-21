@@ -14,6 +14,7 @@ gem 'devise'
 gem 'haml'
 gem 'materialize-sass'
 gem 'simple_form'
+gem 'country_select'
 gem 'will_paginate'
 gem 'paperclip', '~> 4.3'
 

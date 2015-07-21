@@ -13,8 +13,8 @@ class User < ActiveRecord::Base
   has_many :liked_posts, through: :likes, source: :post
   has_many :comments
 
-  has_attached_file :avatar, styles: { medium: '300x300', thumb: '100x100' },
-  default_url: 'images/style/missing.png'
+  has_attached_file :avatar, styles: { profile: '250x250', thumb: '100x100' },
+  default_url: ':style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
   def incoming_requests
@@ -31,5 +31,10 @@ class User < ActiveRecord::Base
                   WHERE  user_id = :user_id'
     Post.where("user_id IN (#{friend_ids})
                 OR user_id = :user_id", user_id: id).order(created_at: :desc)
+  end
+
+  def country_name
+    country = ISO3166::Country[country_code]
+    country.translations[I18n.locale.to_s] || country.name
   end
 end

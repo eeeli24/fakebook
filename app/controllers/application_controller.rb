@@ -5,16 +5,20 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_permitted_parameters, if: :devise_controller?
 
+  protected
+
   def after_sign_out_path_for(resource_or_scope)
     new_user_session_path
   end
 
-  protected
+  def after_update_path_for(resource)
+    user_path(resource)
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:account_update) do |u|
-      u.permit(:name, :age, :country, :avatar)
+      u.permit(:name, :age, :country_code, :avatar, :current_password)
     end
   end
 end

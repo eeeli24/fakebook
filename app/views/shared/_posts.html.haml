@@ -7,7 +7,7 @@
             .span.card-title.green-text
               .row.post-title
                 .col.s6
-                  #{post.user.name}:
+                  = link_to "#{post.user.name}:", user_path(post.user), class: 'green-text'
                   - if post.title
                     = post.title
                 .col.s6.right-align
@@ -31,7 +31,7 @@
                   %p.comments Comments (#{post.comments.count})
                 .collapsible-body
                   .row.comments_dropdown
-                    = simple_form_for @comment do |f|
+                    = simple_form_for comment do |f|
                       .input-field.col.s12
                         = f.hidden_field :post_id, value: post.id
                         = f.input :body, label: 'New comment',

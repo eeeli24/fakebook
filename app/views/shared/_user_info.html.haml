@@ -1,0 +1,29 @@
+.card-panel
+  .row
+    .col.s4
+      = image_tag(user.avatar.url(:profile))
+    .col.s8
+      %h5= user.name
+      %p Age: #{user.age}
+      %p
+        Location:
+        = user.country_name if user.country_code.present?
+  .divider
+  .row.profile_card_footer.right-align
+    .col.s12
+      - if user == current_user
+        %p= link_to 'Edit profile', '#modal_edit', class: 'modal-trigger red-text'
+      - elsif current_user.friends.include?(user)
+        %p= link_to 'Remove from friends',
+          friend_path(id: user.id), method: 'delete', class: 'red-text'
+      - else
+        - unless current_user.pending_friends.include?(user)
+          %p= link_to 'Send friend request',
+            friend_requests_path(friend_id: user.id), method: 'post', class: 'red-text'
+        - else
+          %p.small-text.grey-text Waiting for #{user.name} to accept friend request
+
+- if user == current_user
+  .modal#modal_edit
+    .modal-content
+      = render partial: 'shared/user_edit_form', locals: { user: user }
