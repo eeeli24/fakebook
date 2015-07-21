@@ -16,6 +16,7 @@
         input_html: { class: 'browser-default' }
     .input-field.col.s12
       = f.input :current_password,
-        label: 'Current password. Required to confirm the changes.', required: false
+        label: 'Current password. Required to confirm the changes.',
+        label_html: { class: 'red-text'}, required: false
     .input-field.col.s12.right-align
       = f.button :submit, 'Edit'

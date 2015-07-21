@@ -1,8 +1,8 @@
 class FriendRequestsController < ApplicationController
 
   def index
-    @incoming = current_user.incoming_requests
-    @outgoing = current_user.friend_requests
+    request_ids = FriendRequest.where(friend: current_user).map(&:user_id)
+    @requesters = User.find(request_ids)
   end
 
   def create

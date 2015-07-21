@@ -1,4 +1,4 @@
--# Get rid of error messages as they break layout, and the form is pretty self-explanatory
+-# Get rid of error messages as they break layout, and the form is pretty self-explanatory anyway
 - resource.errors.clear
 .row
   .col.s8.offset-s2
@@ -14,7 +14,9 @@
             = f.input :country_code, required: false, label: false,
               input_html: { class: 'browser-default' }
           .input-field.col.s12
-            = f.input :current_password, label: "Current password. Required to confirm the changes", required: false
+            = f.input :current_password,
+            label: "Current password. Required to confirm the changes",
+            label_html: { class: 'red-text'}, required: false
           .input-field.col.s12
             = f.button :submit, "Update"
       .row
