@@ -1,4 +1,4 @@
-$('.posts').append('#{escape_javascript(render partial: "shared/posts", :locals => { :posts => @posts })}');
+$('.posts').append('#{escape_javascript(render partial: "shared/posts", :locals => { :posts => @posts, :comment => Comment.new })}');
 $('a.load-more-posts').attr('href', '#{root_path page: @posts.next_page}');
 $('.collapsible').collapsible({accordion : false});
 
