@@ -2,7 +2,7 @@
 - if current_user
   %ul.dropdown-content#user
     %li= link_to 'Profile', user_path(current_user)
-    %li= link_to 'Friends', friends_path
+    %li= link_to 'Friends', user_friends_path(current_user)
     %li.divider
     %li= link_to 'Sign out', destroy_user_session_path, method: 'delete'
 

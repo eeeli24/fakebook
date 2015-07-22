@@ -1,0 +1,5 @@
+.container
+  .row
+    .col.s8.offset-s2
+      - @friends.each do |friend|
+        = render partial: 'shared/user_info', locals: { user: friend }

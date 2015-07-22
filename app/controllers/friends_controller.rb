@@ -1,7 +1,8 @@
 class FriendsController < ApplicationController
 
   def index
-    @friends = current_user.friends
+    @user = User.find(params[:user_id])
+    @friends = @user.friends
   end
 
   def destroy

@@ -1,6 +1,9 @@
 .card
   .card-content
-    %span.card-title.black-text Friends
+    - if user == current_user
+      %span.card-title.black-text Friends
+    - else
+      %span.card-title.black-text #{user.name}'s Friends
     - if user.friends.present?
       - user.friends.limit(5).each do |friend|
         .valign-wrapper
@@ -10,4 +13,4 @@
     - else
       %p.grey-text No friends yet
   .card-action.right-align
-    = link_to 'See all', '#', class: 'red-text'
+    = link_to 'See all', user_friends_path(user), class: 'red-text'
