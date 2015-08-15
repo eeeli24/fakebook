@@ -18,6 +18,10 @@ class User < ActiveRecord::Base
   default_url: ':style/missing.png'
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\Z/
 
+  def username
+    self.name.present? ? self.name : self.email
+  end
+
   def incoming_requests
     FriendRequest.where(friend_id: id)
   end

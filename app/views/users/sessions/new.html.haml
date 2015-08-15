@@ -4,9 +4,7 @@
   header { display: none }
   \.home { height: 100%; width: 100%; }
   \.remember { margin-bottom: 0; }
-  \#remember_me { margin-right: 10px; }
-
-
+  \.remember_me { margin-right: 10px; }
 
 .container.home.valign-wrapper
   .container.valign
@@ -30,7 +28,7 @@
                 = f.input :password, required: false
             .row
               .switch.col.s10.offset-s1.right-align
-                = f.input :remember_me, wrapper: false, label_html: { id: 'remember_me' },
+                = f.input :remember_me, wrapper: false, label_html: { class: 'remember_me' },
                   as: :boolean if devise_mapping.rememberable?
                 = f.button :submit, "Sign in"
     .row.home_footer

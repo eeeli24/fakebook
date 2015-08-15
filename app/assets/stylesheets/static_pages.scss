@@ -19,8 +19,15 @@
   }
 }
 
+// Flashes
 #errors {
   margin-bottom: 0;
+}
+
+// Devise errors
+.error {
+  font-size: small;
+  color: #f44336;
 }
 
 .alert {

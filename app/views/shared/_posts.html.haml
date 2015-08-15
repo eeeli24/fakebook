@@ -12,7 +12,7 @@
                 %span.card-title.green-text
                   .row.post-title
                     .col.s6
-                      = link_to "#{post.user.name}:", user_path(post.user), class: 'green-text'
+                      = link_to "#{post.user.username}:", user_path(post.user), class: 'green-text'
                       - if post.title
                         = post.title
                     .col.s6.right-align
@@ -42,7 +42,8 @@
                         .input-field.col.s12
                           = f.hidden_field :post_id, value: post.id
                           = f.input :body, label: 'New comment',
-                            input_html: { class: 'materialize-textarea' }
+                            input_html: { class: 'materialize-textarea' },
+                            required: false
                         .input-field.col.s12.right-align
                           = f.button :submit, 'Post comment'
                     = render partial: 'shared/comments',

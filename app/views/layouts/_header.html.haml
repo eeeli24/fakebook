@@ -19,6 +19,7 @@
       .nav-wrapper
         = link_to 'Fakebook', root_path, method: 'get', class: 'brand-logo headerlogo'
         %ul.right
+          -# Paint the notification icon red if there are new notifications
           - if current_user.incoming_requests.present?
             %li
               %a.dropdown-button(href='' data-activates='notifications')
@@ -27,8 +28,9 @@
             %li
               %a.dropdown-button(href='' data-activates='notifications')
                 %i.mdi-social-notifications-none
+          %li= link_to 'Home', root_path
           %li
             %a.dropdown-button(href='' data-activates='user')
-              = current_user.name
+              = current_user.username
           %li= link_to 'Users', users_path
           %li= link_to 'About', '#'
