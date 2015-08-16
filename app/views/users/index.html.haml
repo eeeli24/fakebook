@@ -4,3 +4,5 @@
       - @users.each do |user|
         - unless user == current_user
           = render partial: 'shared/user_info', locals: { user: user }
+        .center
+          = will_paginate @users

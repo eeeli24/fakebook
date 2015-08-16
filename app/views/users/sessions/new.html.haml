@@ -3,7 +3,6 @@
   body { height: 100%; background-color: #66bb6a; }
   header { display: none }
   \.home { height: 100%; width: 100%; }
-  \.remember { margin-bottom: 0; }
   \.remember_me { margin-right: 10px; }
 
 .container.home.valign-wrapper
@@ -31,6 +30,10 @@
                 = f.input :remember_me, wrapper: false, label_html: { class: 'remember_me' },
                   as: :boolean if devise_mapping.rememberable?
                 = f.button :submit, "Sign in"
-    .row.home_footer
+    .row
       .col.s12.center-align
-        = link_to 'About', about_path, id: 'about'
+        %ul.footer-links
+          %li= link_to 'Sign up', new_user_registration_path, class: 'white-text'
+          %li.white-text
+            &#8226
+          %li= link_to 'About', about_path, class: 'white-text'

@@ -1,4 +1,5 @@
 class FriendRequestsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     request_ids = FriendRequest.where(friend: current_user).map(&:user_id)

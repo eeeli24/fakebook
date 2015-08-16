@@ -12,7 +12,7 @@
                 %span.card-title.green-text
                   .row.post-title
                     .col.s6
-                      = link_to "#{post.user.username}:", user_path(post.user), class: 'green-text'
+                      = link_to "#{post.user.name}:", user_path(post.user), class: 'green-text'
                       - if post.title
                         = post.title
                     .col.s6.right-align

@@ -5,9 +5,9 @@
     .col.s8
       - if current_page?(action: :index)
         = link_to user_path(user) do
-          %h5.red-text= user.username
+          %h5.red-text= user.name
       - else
-        %h5= user.username
+        %h5= user.name
       %p Age: #{user.age}
       %p
         Location:
@@ -30,7 +30,7 @@
           %p= link_to 'Send friend request',
             friend_requests_path(friend_id: user.id), method: 'post', class: 'red-text'
         - else
-          %p.small-text.grey-text Waiting for #{user.username} to accept friend request
+          %p.small-text.grey-text Waiting for #{user.name} to accept friend request
 
 - if user == current_user
   .modal#modal_edit

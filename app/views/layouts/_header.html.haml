@@ -28,9 +28,9 @@
             %li
               %a.dropdown-button(href='' data-activates='notifications')
                 %i.mdi-social-notifications-none
-          %li= link_to 'Home', root_path
           %li
             %a.dropdown-button(href='' data-activates='user')
-              = current_user.username
+              = current_user.name
+          %li= link_to 'Home', root_path
           %li= link_to 'Users', users_path
           %li= link_to 'About', '#'

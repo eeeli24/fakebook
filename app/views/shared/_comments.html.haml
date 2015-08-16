@@ -5,6 +5,6 @@
         = image_tag(comment.user.avatar(:small), class: 'circle')
     .col.s11.comments
       %p.comments
-        = link_to comment.user.username, user_path(comment.user.id), class: 'red-text comments'
+        = link_to comment.user.name, user_path(comment.user.id), class: 'red-text comments'
         = comment.body
       %p.comments.small-text.grey-text= comment.created_at.strftime('%b %-d at %H:%M')

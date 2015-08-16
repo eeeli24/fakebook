@@ -3,13 +3,13 @@
     - if user == current_user
       %span.card-title.black-text Friends
     - else
-      %span.card-title.black-text #{user.username}'s Friends
+      %span.card-title.black-text #{user.name}'s Friends
     - if user.friends.present?
       - user.friends.limit(5).each do |friend|
         .valign-wrapper
           = link_to user_path(friend), class: 'red-text valign' do
             = image_tag(friend.avatar(:small), class: 'circle')
-            = friend.username
+            = friend.name
     - else
       %p.grey-text No friends yet
   .card-action.right-align

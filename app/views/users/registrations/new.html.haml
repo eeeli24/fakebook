@@ -31,4 +31,8 @@
                 = f.button :submit, "Sign up"
     .row.home_footer
       .col.s12.center-align
-        = link_to 'About', about_path, id: 'about'
+        %ul.footer-links
+          %li= link_to 'Sign in', new_user_session_path, class: 'white-text'
+          %li.white-text
+            &#8226
+          %li= link_to 'About', about_path, class: 'white-text'

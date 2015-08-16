@@ -1,26 +1,27 @@
 module ApplicationHelper
 
-  # Icons are different depending if user liked post already or not
+  # Icons are different depending if user liked the post already or not
   def render_like_icon(post)
-    if post.likers.include?(current_user)
-      icon_class = 'mdi-action-favorite red-text'
-    else
-      icon_class = 'mdi-action-favorite-outline red-text'
-    end
+    icon_class = if post.likers.include?(current_user)
+                    'mdi-action-favorite red-text'
+                 else
+                    'mdi-action-favorite-outline red-text'
+                 end
     content_tag(:i, '', class: icon_class)
   end
 
-  # Text after the like icon depends if user or someone else liked post
+  # Text after the like icon depends if user or someone else liked the post
   def render_like_text(post)
-    if post.likers.include?(current_user) && post.likers.count > 1
-      text = "You and #{pluralize((post.likers.count - 1), 'person', 'people')} liked this"
-    elsif post.likers.include?(current_user) && post.likers.count == 1
-      text = 'You liked this'
-    elsif !post.likers.include?(current_user) && post.likers.exists?
-      text = "#{pluralize(post.likers.count, 'person', 'people')} liked this"
-    else
-      text = 'Like'
-    end
+    text = case
+           when post.likers.include?(current_user) && post.likers.count > 1
+             "You and #{pluralize((post.likers.count - 1), 'person', 'people')} liked this"
+           when post.likers.include?(current_user) && post.likers.count == 1
+             'You liked this'
+           when !post.likers.include?(current_user) && post.likers.exists?
+             "#{pluralize(post.likers.count, 'person', 'people')} liked this"
+           else
+             'Like'
+           end
     content_tag(:p, text, class: 'like_text small-text grey-text')
   end
 end
