@@ -12,7 +12,7 @@
     .input-field.col.s12
       = f.input :age, required: false
     .input-field.col.s12
-      = f.input :country_code, required: false, label: false,
+      = f.input :country_code, required: false, label: false, include_blank: false,
         input_html: { class: 'browser-default' }
     .input-field.col.s12
       = f.input :current_password,
