@@ -27,3 +27,7 @@ group :development, :test do
   gem 'database_cleaner'
   gem 'faker'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
