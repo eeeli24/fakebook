@@ -5,7 +5,7 @@
     .col.s8
       - if current_page?(action: :index)
         = link_to user_path(user) do
-          %h5.red-text= user.name
+          %h5.green-text= user.name
       - else
         %h5= user.name
       %p Age: #{user.age}

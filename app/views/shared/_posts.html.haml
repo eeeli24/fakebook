@@ -9,13 +9,13 @@
                 = link_to user_path(post.user) do
                   = image_tag(post.user.avatar(:post), class: 'circle')
               .col.s11
-                %span.card-title.green-text
+                %span.card-title
                   .row.post-title
-                    .col.s6
+                    .col.s9.black-text
                       = link_to "#{post.user.name}:", user_path(post.user), class: 'green-text'
                       - if post.title
                         = post.title
-                    .col.s6.right-align
+                    .col.s3.right-align
                       %p.small-text.grey-text= post.created_at.strftime('%b %-d at %H:%M')
                 %p.left-align.post_body= post.body
                 -unless post.user == current_user

@@ -7,7 +7,7 @@
     - if user.friends.present?
       - user.friends.limit(5).each do |friend|
         .valign-wrapper
-          = link_to user_path(friend), class: 'red-text valign' do
+          = link_to user_path(friend), class: 'green-text valign' do
             = image_tag(friend.avatar(:small), class: 'circle')
             = friend.name
     - else
