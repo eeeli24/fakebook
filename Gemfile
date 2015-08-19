@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.2.0'
 
 gem 'rails', '4.2.1'
 gem 'pg'
@@ -17,6 +18,7 @@ gem 'simple_form'
 gem 'country_select'
 gem 'will_paginate'
 gem 'paperclip', '~> 4.3'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'
@@ -25,7 +27,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'factory_girl_rails'
   gem 'database_cleaner'
-  gem 'faker'
   gem 'letter_opener'
 end
 

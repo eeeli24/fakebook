@@ -1,0 +1,9 @@
+.row
+  = simple_form_for comment do |f|
+    .input-field.col.s12
+      = f.hidden_field :post_id, value: post.id
+      = f.input :body, label: 'New comment',
+        input_html: { class: 'materialize-textarea' },
+        required: false
+    .input-field.col.s12.right-align
+      = f.button :submit, 'Post comment'
