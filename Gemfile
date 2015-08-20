@@ -19,6 +19,8 @@ gem 'country_select'
 gem 'will_paginate'
 gem 'paperclip', '~> 4.3'
 gem 'faker'
+gem 'omniauth-facebook'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'

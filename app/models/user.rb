@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
-  # :confirmable, :recoverable, :lockable, :timeoutable and :omniauthable
+  # :confirmable, :recoverable, :lockable, :timeoutable
   devise :database_authenticatable, :registerable,
-         :rememberable, :trackable, :validatable
+         :rememberable, :trackable, :validatable,
+         :omniauthable, omniauth_providers: [:facebook]
 
   has_many :friend_requests, dependent: :destroy
   has_many :pending_friends, through: :friend_requests, source: :friend
@@ -21,6 +22,22 @@ class User < ActiveRecord::Base
   validates :name, presence: true
 
   self.per_page = 10
+
+  def self.from_omniauth(auth)
+    where(auth.slice(provider: auth.provider, uid: auth.uid)).first_or_create do |user|
+      user.email    = auth.info.email
+      user.password = Devise.friendly_token[0,20]
+      user.name     = (auth.info.first_name + auth.info.last_name)
+    end
+  end
+
+  def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.facebook_data"] && session["devise.facebook_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
+  end
 
   def incoming_requests
     FriendRequest.where(friend_id: id)

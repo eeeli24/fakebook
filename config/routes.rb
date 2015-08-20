@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  devise_for :users, :path => '', controllers: { registrations: :registrations }
+  devise_for :users, :path => '',
+    controllers: { registrations: :registrations, omniauth_callbacks: :omniauth_callbacks }
   resources :users, only: [:index, :show] do
     resources :friends, only: [:index, :destroy]
   end
