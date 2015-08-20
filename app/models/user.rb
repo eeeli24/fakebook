@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
       user.email    = auth.info.email
       pass = Devise.friendly_token[0,20]
       user.password = pass
-      user.passwod_confirmation = pass
+      user.password_confirmation = pass
       user.name     = auth.info.name
     end
   end
