@@ -24,12 +24,12 @@ class User < ActiveRecord::Base
   self.per_page = 10
 
   def self.from_omniauth(auth)
-    where(auth.slice(provider: auth.provider, uid: auth.uid)).first_or_create do |user|
-      user.email    = auth.info.email
-      pass = Devise.friendly_token[0,20]
-      user.password = pass
+    where(auth.slice(provider: auth.provider, uid: auth.uid)).first_or_create! do |user|
+      user.email                 = auth.info.email
+      pass                       = Devise.friendly_token[0,20]
+      user.password              = pass
       user.password_confirmation = pass
-      user.name     = auth.info.name
+      user.name                  = auth.info.name
     end
   end
 
