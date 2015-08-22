@@ -85,6 +85,8 @@ Rails.application.configure do
       bucket: Figaro.env.s3_bucket_name,
       access_key_id: Figaro.env.aws_access_key_id,
       secret_access_key: Figaro.env.aws_secret_access_key
-    }
+    },
+    s3_protocol: 'https',
+    s3_host_name: 's3.eu-central-1.amazonaws.com'
   }
 end
