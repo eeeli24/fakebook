@@ -41,4 +41,9 @@
           %li= link_to 'Sign up', new_user_registration_path, class: 'white-text'
           %li.white-text
             &#8226
+          %li= link_to 'Sign in with a demo account',
+            new_user_session_path(user: {email: 'johndoe@example.com', password: 'qweqwe', remember_me: '0'}),
+            method: 'post', class: 'white-text'
+          %li.white-text
+            &#8226
           %li= link_to 'About', about_path, class: 'white-text'

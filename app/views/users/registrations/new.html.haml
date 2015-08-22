@@ -8,8 +8,8 @@
   .container.valign
     .row
       .col.s12
-        %h1.center-align#home_heading Fakebook
-        %p.center-align#home_subheading A basic social network
+        %h1.center-align.home_heading Fakebook
+        %p.center-align.home_subheading A basic social network
     .row.signup.white
       .col.s12.z-depth-2
         .row
@@ -33,6 +33,11 @@
       .col.s12.center-align
         %ul.footer-links
           %li= link_to 'Sign in', new_user_session_path, class: 'white-text'
+          %li.white-text
+            &#8226
+          %li= link_to 'Sign in with a demo account',
+            new_user_session_path(user: {email: 'johndoe@example.com', password: 'qweqwe', remember_me: '0'}),
+            method: 'post', class: 'white-text'
           %li.white-text
             &#8226
           %li= link_to 'About', about_path, class: 'white-text'
