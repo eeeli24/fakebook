@@ -21,6 +21,7 @@ gem 'paperclip', '~> 4.3'
 gem 'faker'
 gem 'omniauth-facebook'
 gem 'figaro'
+gem 'aws-sdk'
 
 group :development, :test do
   gem 'byebug'
