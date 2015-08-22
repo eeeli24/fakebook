@@ -84,7 +84,7 @@ Rails.application.configure do
     s3_credentials: {
       bucket: Figaro.env.s3_bucket_name,
       access_key_id: Figaro.env.aws_access_key_id,
-      secrect_access_key: Figaro.env.aws_secret_access_key
+      secret_access_key: Figaro.env.aws_secret_access_key
     }
   }
 end
