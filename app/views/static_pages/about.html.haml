@@ -1,0 +1,21 @@
+- content_for :stylesheets do
+  html { height: 100%; }
+  body { height: 100%; }
+  - unless user_signed_in?
+    body { background-color: #66bb6a; }
+  \.home { height: 100%; width: 100%; }
+
+.container.home.valign-wrapper
+  .container.valign
+    .row
+      .col.s10.offset-s1
+        .card
+          .card-content
+            %span.card-title.green-text
+              Fakebook
+            %p A basic social network built using Ruby on Rails.
+            %p Part of #{link_to 'The Odin Project', 'http://www.theodinproject.com/', class: 'green-text'} curriculum.
+            =link_to 'https://github.com/eeeli24/fakebook', class: 'green-text' do
+              #{image_tag 'GitHub-Mark-32px.png', class: 'gh-logo'} Source code
+          .card-action.right-align
+            =link_to 'Back', :back, class: 'red-text'
